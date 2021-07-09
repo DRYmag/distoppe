@@ -1,0 +1,25 @@
+<mat-card *ngFor="let timer of (timers$ | async); trackBy: trackByDay" matRipple (click)="toggleTimer(timer)">
+  <mat-card-title-group>
+    <mat-card-title>
+      Day {{ timer.idDay }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <ng-container *ngIf="timer.isDone; else remainingTpl">
+        {{ timer.extra | appTime }} of extra hours
+      </ng-container>
+      <ng-template #remainingTpl>
+        {{ timer.remaining | appTime }} remaining
+      </ng-template>
+    </mat-card-subtitle>
+    <span fxFlex="1 1 auto"></span>
+    <div>
+      <mat-chip-list>
+        <mat-chip *ngIf="timer.isDone">Done</mat-chip>
+        <mat-chip *ngIf="isStarted(timer)" color="accent" selected>Started</mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card-title-group>
+  <mat-progress-bar *ngIf="isStarted(timer) || (timer.progress > 0 && !timer.isDone)" mode="determinate"
+    [color]="isStarted(timer) ? 'accent' : 'primary'" [value]="timer.progress">
+  </mat-progress-bar>
+</mat-card>

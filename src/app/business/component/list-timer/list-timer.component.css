@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+mat-card {
+  cursor: pointer;
+}
+
+mat-card + mat-card {
+  margin-top: 16px;
+}
+
+::ng-deep .mat-progress-bar-background {
+  opacity: 0;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  opacity: 0.4;
+}

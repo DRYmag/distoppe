@@ -1,0 +1,19 @@
+<form mat-dialog-content [formGroup]="form">
+  I work
+  <mat-form-field [style.width.px]="25">
+    <input matInput type="number" formControlName="days" min="1" max="7">
+  </mat-form-field>
+  <ng-container [ngPlural]="form.value.days || 1">
+    <ng-template ngPluralCase="=1">day</ng-template>
+    <ng-template ngPluralCase="other">days</ng-template>
+  </ng-container>
+  in a week for a total of
+  <mat-form-field [style.width.px]="30">
+    <input matInput type="number" formControlName="timeLimit" min="1" max="168">
+  </mat-form-field>
+  hours.
+</form>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div>
+

@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.container {
+  padding: 16px;
+}
+
+.reset {
+  margin-bottom: 16px;
+  width: 100%;
+}
