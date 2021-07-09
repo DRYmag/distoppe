@@ -3,7 +3,7 @@ const { app, BrowserWindow, nativeTheme } = require('electron');
 function createWindow() {
   const win = new BrowserWindow({
     width: 375,
-    height: 730,
+    height: 650,
     icon: `${__dirname}/icon.png`
   });
 

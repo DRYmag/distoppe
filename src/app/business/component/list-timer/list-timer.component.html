@@ -1,25 +1,27 @@
-<mat-card *ngFor="let timer of (timers$ | async); trackBy: trackByDay" matRipple (click)="toggleTimer(timer)">
-  <mat-card-title-group>
-    <mat-card-title>
-      Day {{ timer.idDay }}
-    </mat-card-title>
-    <mat-card-subtitle>
+<div *ngFor="let timer of (timers$ | async); trackBy: trackByDay" matRipple class="card-container">
+  <mat-card (click)="toggleTimer(timer)"
+    [style.box-shadow]="'inset 5 0 0 red'">
+    <mat-card-title-group>
+      <mat-card-title>
+        Day {{ timer.idDay }}
+      </mat-card-title>
+      <mat-icon *ngIf="isStarted(timer)" class="icon-started">
+        play_circle
+      </mat-icon>
+      <span fxFlex="1 1 auto"></span>
+      <div>
+        <mat-progress-spinner *ngIf="isStarted(timer) || timer.progress > 0" mode="determinate"
+          [color]="isStarted(timer) ? 'accent' : 'primary'" [value]="timer.progress" [diameter]="28">
+        </mat-progress-spinner>
+      </div>
+    </mat-card-title-group>
+    <mat-card-content>
       <ng-container *ngIf="timer.isDone; else remainingTpl">
         {{ timer.extra | appTime }} of extra hours
       </ng-container>
       <ng-template #remainingTpl>
         {{ timer.remaining | appTime }} remaining
       </ng-template>
-    </mat-card-subtitle>
-    <span fxFlex="1 1 auto"></span>
-    <div>
-      <mat-chip-list>
-        <mat-chip *ngIf="timer.isDone">Done</mat-chip>
-        <mat-chip *ngIf="isStarted(timer)" color="accent" selected>Started</mat-chip>
-      </mat-chip-list>
-    </div>
-  </mat-card-title-group>
-  <mat-progress-bar *ngIf="isStarted(timer) || (timer.progress > 0 && !timer.isDone)" mode="determinate"
-    [color]="isStarted(timer) ? 'accent' : 'primary'" [value]="timer.progress">
-  </mat-progress-bar>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

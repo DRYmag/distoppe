@@ -2,18 +2,16 @@
   display: block;
 }
 
+.card-container + .card-container {
+  margin-top: 16px;
+}
+
 mat-card {
   cursor: pointer;
 }
 
-mat-card + mat-card {
-  margin-top: 16px;
-}
-
-::ng-deep .mat-progress-bar-background {
-  opacity: 0;
-}
-
-::ng-deep .mat-progress-bar-buffer {
-  opacity: 0.4;
+.icon-started {
+  color: #69f0ae;
+  font-size: 16px;
+  margin: 3px 0 0 8px;
 }

@@ -15,10 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRippleModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatIconModule } from '@angular/material/icon';
 
 export function noop() {
   return function () { };
@@ -38,9 +39,10 @@ export function noop() {
     MatCardModule,
     MatChipsModule,
     MatDialogModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
-    MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatRippleModule,
     NgxsModule.forRoot([ParamsState, TimerState], {
       developmentMode: !environment.production
